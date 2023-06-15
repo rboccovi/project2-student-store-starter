@@ -1,10 +1,24 @@
 import * as React from "react"
 import "./Home.css"
+import ProductGrid from "../ProductGrid/ProductGrid"
 
-export default function Home() {
+
+const Home = ({products}) => {
   return (
-    <div className="home">
-      <p>Home</p>
-    </div>
+    <ProductGrid products={products} />
   )
 }
+
+export default  Home
+
+
+
+{/* <div className="home">
+   <h1> Product List</h1>
+      <p>Home</p>
+      <ul>
+        {products.map (products => ( <li key={products.id}>{products.name}</li>
+        
+        ))}
+      </ul>
+    </div> */}

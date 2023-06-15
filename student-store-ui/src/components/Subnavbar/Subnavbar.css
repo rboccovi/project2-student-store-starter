@@ -1,0 +1,104 @@
+.sub-navbar {
+    background-color:transparent;
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+    max-width: 100vw;
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 800px;
+    max-width: 1200px;
+    padding: 0 20px;
+    justify-content: space-between;
+  }
+  
+  .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    
+  }
+  
+  .search-bar,
+  .links,
+  .hamburger-menu,
+  .category-menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color:rgb(0, 0, 0);
+  }
+  
+  .hamburger-menu {
+    margin-left: 20px;
+    justify-content: space-between;
+    
+  }
+  
+  .category-menu {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    justify-content: space-between;
+    
+  }
+  
+  .category-menu li {
+    margin-right: 10px;
+    justify-content: space-between;
+    
+  }
+  
+  .button {
+    color:black;
+    background-color: transparent;
+    padding: 10px 20px;
+    border-radius: 4px;
+    text-align: center;
+    justify-content: space-between;
+  }
+  .search-bar{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex: 1;
+    margin-right: 40px;
+}
+
+  
+
+  .help{
+    justify-content: space-between;
+    padding-right: 30px;
+  }
+
+ .Subnav-buttons{
+    cursor: pointer;
+    transition: all .1s ease;
+    border: none;
+    background: transparent;
+    outline: none;
+    font-weight: 500;
+    font-size: 18px;
+    padding-bottom: 10px;
+    border-bottom: solid 2px transparent;
+    transition: all .2s ease;
+ }
+
+ .material-icons{    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 200px;}
+
+    .cart{
+        color: black;
+    }
