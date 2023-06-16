@@ -6,8 +6,8 @@ function Hero () {
 
         <section className="hero">
             <div  className= "content">
-                <h1> Welcome to Roberta's</h1>
-                <h2>Student shop 🛒🛍️</h2>
+                <h1> Welcome to Roberta's Student shop 🛒</h1>
+        
                     
 
                

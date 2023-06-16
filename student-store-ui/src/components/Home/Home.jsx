@@ -1,24 +1,33 @@
-import * as React from "react"
+import React, { useState, useEffect } from 'react';
+import ProductGrid from '../ProductGrid/ProductGrid';
 import "./Home.css"
-import ProductGrid from "../ProductGrid/ProductGrid"
 
+const Home = ({ products }) => {
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
 
-const Home = ({products}) => {
+  const handleSearchChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
+  useEffect(() => {
+    const filterProducts = () => {
+      const filteredProducts = products.filter((product) =>
+        product.name.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+      setFilteredProducts(filteredProducts);
+    };
+
+    filterProducts();
+  }, [products, searchQuery]);
+
   return (
-    <ProductGrid products={products} />
-  )
-}
+    <div className="SearchBar">
+      <input type="text" value={searchQuery} onChange={handleSearchChange} placeholder="Search..."></input>
+      <i className="material-icons">search</i> 
+      <ProductGrid products={filteredProducts} />
+    </div>
+  );
+};
 
-export default  Home
-
-
-
-{/* <div className="home">
-   <h1> Product List</h1>
-      <p>Home</p>
-      <ul>
-        {products.map (products => ( <li key={products.id}>{products.name}</li>
-        
-        ))}
-      </ul>
-    </div> */}
+export default Home;

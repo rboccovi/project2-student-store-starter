@@ -1,57 +1,75 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from '../Navbar/Navbar';
 import Sidebar from '../Sidebar/Sidebar';
-import Home from '../Home/Home'
+// import Logo from '../Logo/Logo';
+import Home from '../Home/Home';
 import Hero from '../Hero/Hero';
-import Subnavbar from '../Subnavbar/Subnavbar';
-import axios from "axios";
-import { Route, Link } from 'react-router-dom';
+// import Subnavbar from '../Subnavbar/Subnavbar';
+import axios from 'axios';
+import ProductDetail from '../ProductDetail/ProductDetail';
+import ProductView from '../ProductView/ProductView';
+import Subnavbar from "../Subnavbar/Subnavbar"
+import ProductGrid from '../ProductGrid/ProductGrid';
+import AboutUs from '../AboutUs/AboutUs'
+import ContactUs from '../ContactUs/ContactUs'
+// import AboutUs from "./component/aboutUs/aboutUs"
+
 const App = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    axios.get("https://codepath-store-api.herokuapp.com/store")
-      .then(response => {
-
+    axios
+      .get('https://codepath-store-api.herokuapp.com/store')
+      .then((response) => {
         setProducts(response.data.products);
       })
-      .catch(error => {
+      .catch((error) => {
         console.error(error);
       });
   }, []);
+
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const handleToggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
-
-
-
-
-
-
-  return (
-
+  return ( 
     <div className="app">
-      <BrowserRouter>
-        <main>
-          <Navbar />
-          <Hero />
-          <Subnavbar />
-          <Sidebar isOpen={isSidebarOpen} />
-          <Home products={products} />
+    <Router>
+      
+      <Navbar />
+    
+     
+      <Hero />
 
-        </main>
-      </BrowserRouter>
+     
+      <Subnavbar />
+     
+      {/* <Home products={products}/> */}
 
 
-    </div>
+    
+      <Routes>
+        
+        <Route path="/product/:productId" element={<ProductDetail />} />
+        <Route path="/" element={<Home products={products}/>}/>
+        <Route path="/about-us" element={ <AboutUs />}></Route>
+        <Route path="/contact-us" element={ <ContactUs />}></Route> 
+        <Route path="/buy-now" />
 
+
+
+        {/* IMPLEMENT NOT FOUND COMPONENT */}
+        {/* <Route path="*" element={<NotFound />} */}
+      </Routes>
+
+      {/* Render the Sidebar component */}
+      {isSidebarOpen && <Sidebar isOpen={isSidebarOpen} />}
+    </Router>
+  </div>
   );
 };
-
-
 
 export default App;

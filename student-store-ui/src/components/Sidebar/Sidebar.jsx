@@ -3,7 +3,7 @@ import './Sidebar.css';
 
 const Sidebar = ({ isOpen }) => {
   return (
-    <><button class="toggle-button button closed"><i class="material-icons md-48">arrow_forward</i></button><><div className={`sidebar ${isOpen ? 'open' : 'closed'}`}>
+    <><button className="toggle-button button closed"><i className="material-icons md-48">arrow_forward</i></button><><div className={`sidebar ${isOpen ? 'open' : 'closed'}`}>
       <div className="sidebar-content">
         <div className="cart-image">
           <img src="/path/to/cart-icon.png" alt="Cart" />
@@ -13,9 +13,9 @@ const Sidebar = ({ isOpen }) => {
         </div>
       </div>
     </div>
-    <div class="cart-icons"><span class="cart-icon icon button"><i class="material-icons md-48">add_shopping_cart</i></span>
-    <span class="cart-icon icon button"><i class="material-icons md-48">monetization_on</i></span><span class="cart-icon icon button">
-      <i class="material-icons md-48">fact_check</i></span></div></></>
+    <div className="cart-icons"><span className="cart-icon icon button"><i className="material-icons md-48">add_shopping_cart</i></span>
+    <span className="cart-icon icon button"><i className="material-icons md-48">monetization_on</i></span><span className="cart-icon icon button">
+     <i className="material-icons md-48">fact_check</i></span></div></></>
   );
 };
 

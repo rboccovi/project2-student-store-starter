@@ -1,5 +1,5 @@
 .navbar {
-    background-color: #ec78c2;
+    background-color: #abbca9;
     overflow: hidden;
     text-align: left;
     display: flex;
@@ -14,7 +14,7 @@
   /* Style the links inside the navigation bar */
   .navbar {
     float: left;
-    color: #ffffff;
+    color: black;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -35,7 +35,7 @@
   }
   /* Add a color to the active/current link */
   .navbar a.active {
-    background-color: #04AA6D;
+    background-color: #9ab5ab;
     color: rgb(219, 200, 200);
   }
 /*
@@ -72,6 +72,10 @@
 
   .NavbarElements{
   
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     padding-left: 120px;
+    color: white
+  }
+  .logo{
+
+    size: 25px;
   }
