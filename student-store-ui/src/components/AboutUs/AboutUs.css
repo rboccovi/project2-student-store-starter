@@ -1,22 +1,25 @@
-.about-section {
+/* .about-section {
     background-color: #60a02b;
     padding: 20px;
-  }
+    text-align: center;
+  } */
   
-  .about-section .container {
+  /* .about-section .container {
     max-width: 800px;
     margin: 0 auto;
     text-align: center;
    background-color: #60a02b
-  }
-  
-  .about-section h2 {
-    font-size: 24px;
+  } */
+   
+   .AboutUs {
+    font-size: 75px;
     margin-bottom: 10px;
+    text-align: center;
   }
   
-  .about-section p {
-    font-size: 16px;
+   p {
+    font-size: 20px;
     line-height: 1.5;
+    text-align: center;
   }
   

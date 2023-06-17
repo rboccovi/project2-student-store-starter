@@ -19,7 +19,7 @@ const ProductGrid = ({ products }) => {
         <button onClick={() => handleCategoryFilter(null)}>All</button>
         <button onClick={() => handleCategoryFilter("clothing")}>Clothing</button>
         <button onClick={() => handleCategoryFilter("food")}>Food</button>
-        <button onClick={() => handleCategoryFilter("Accesories")}>Accessories</button>
+        <button onClick={() => handleCategoryFilter("accessories")}>Accessories</button>
         <button onClick={() => handleCategoryFilter("tech")}>Tech</button>
         {/* Add more category buttons as needed */}
       </div>

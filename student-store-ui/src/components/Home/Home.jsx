@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ProductGrid from '../ProductGrid/ProductGrid';
 import "./Home.css"
+import Footer from '../Footer/Footer';
 
 const Home = ({ products }) => {
   const [filteredProducts, setFilteredProducts] = useState([]);
@@ -22,11 +23,11 @@ const Home = ({ products }) => {
   }, [products, searchQuery]);
 
   return (
-    <div className="SearchBar">
+    <><div className="SearchBar">
       <input type="text" value={searchQuery} onChange={handleSearchChange} placeholder="Search..."></input>
-      <i className="material-icons">search</i> 
+      <i className="material-icons">search</i>
       <ProductGrid products={filteredProducts} />
-    </div>
+    </div><Footer /></>
   );
 };
 

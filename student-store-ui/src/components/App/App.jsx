@@ -13,6 +13,7 @@ import Subnavbar from "../Subnavbar/Subnavbar"
 import ProductGrid from '../ProductGrid/ProductGrid';
 import AboutUs from '../AboutUs/AboutUs'
 import ContactUs from '../ContactUs/ContactUs'
+import Logo from '../Logo/Logo';
 // import AboutUs from "./component/aboutUs/aboutUs"
 
 const App = () => {
@@ -58,6 +59,7 @@ const App = () => {
         <Route path="/about-us" element={ <AboutUs />}></Route>
         <Route path="/contact-us" element={ <ContactUs />}></Route> 
         <Route path="/buy-now" />
+        <Route path="/"element={<Logo/>}></Route>
 
 
 

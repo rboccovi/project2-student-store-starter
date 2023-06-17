@@ -41,7 +41,7 @@ console.log("name",  product.name)
       
      <img  className="Product-detail-img" src={product.image} ></img>
      
-      <p>Price: {product.price}</p>
+      <p>Price: ${product.price}</p>
 
       <button onClick={() => handleAddItemToCart(product)}>Add to Cart</button>
       <button onClick={() => handleRemoveItemToCart(product)}>Remove from Cart</button>

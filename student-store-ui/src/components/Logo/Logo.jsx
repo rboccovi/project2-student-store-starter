@@ -1,16 +1,19 @@
-// import React from "react";
-// import { Link } from "react-router-dom";
+import React from "react";
+import "./Logo.css" 
+import { Link } from "react-router-dom";
 
-// const Logo = () => {
-//   return (
-//     <div className="logo">
+const Logo = () => {
+  return (
+    <div className="logo">
     
-//       <img src="https://cdn.dribbble.com/users/2855140/screenshots/8916638/r-logo_4x.jpg" alt="Logo" />
-      
-      
-//       <Link to="/">Home</Link>
-// //     </div>
-// //   );
-// // };
+      <img src="https://www.waltmire.com/blog/wp-content/uploads/2017/12/R-in-a-circle-trademark-1024x538.jpg" alt="Logo" />
+      <Link to="/" className="logo">
+              
+          </Link>
 
-// export default Logo;
+  
+       </div>
+   );
+};
+
+export default Logo;
