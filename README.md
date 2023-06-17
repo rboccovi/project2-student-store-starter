@@ -4,8 +4,8 @@ Selling merchandise in the modern era requires digital solutions. For this proje
 
 Check out our [deployed Student Store](https://codepath-student-store-demo.surge.sh/) for reference! Explore the exemplar by trying the following tasks:
 
-- Click on the different categories (clothing, food, etc.) to filter the list of products.
-- Search for an existing product.
+-Click on the different categories (clothing, food, etc.) to filter the list of products.
+-  Search for an existing product.
 - Search for a product that doesn't exist.
 - Add several products to the shopping cart.
 - Checkout and view the final receipt.
@@ -14,11 +14,11 @@ Check out our [deployed Student Store](https://codepath-student-store-demo.surge
 
 ### Core Features
 
-- [ ] The website displays header, banner, search, product grid, about, contact, and footer section.
-- [ ] The website displays the products at the [GET /store endpoint](https://codepath-store-api.herokuapp.com/store) on initial page load.
-- [ ] Users can click on a category (clothing, food, etc.) to filter the product grid by type.
-- [ ] Users can search for products.
-- [ ] User can click on a product in the grid to navigate to a new page containing additional product details.
+- [X ] The website displays header, banner, search, product grid, *about, *contact, and *footer section.
+- [ x] The website displays the products at the [GET /store endpoint](https://codepath-store-api.herokuapp.com/store) on initial page load.
+- [ x ] Users can click on a category (clothing, food, etc.) to filter the product grid by type.
+- [ x] Users can search for products.
+- [ x] User can click on a product in the grid to navigate to a new page containing additional product details.
 
 ### Stretch Features
 
