@@ -9,9 +9,9 @@ const ProductView = ({ product, handleAddItemToCart, handleRemoveItemToCart }) =
       <p>{product.description}</p>
       <p>Price: ${product.price}</p>
 
-      {/* Example usage of handleAddItemToCart and handleRemoveItemToCart */}
+      {/* Example usage of handleAddItemToCart and handleRemoveItemToCart
       <button onClick={() => handleAddItemToCart(product)}>Add to Cart</button>
-      <button onClick={() => handleRemoveItemToCart(product)}>Remove from Cart</button>
+      //<button onClick={() => handleRemoveItemToCart(product)}>Remove from Cart</button> */}
     </div>
   );
 };

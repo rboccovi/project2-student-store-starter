@@ -1,39 +1,50 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './ProductCard.css'
 
-const ProductCard = ({ product, handleAddItemToCart, handleRemoveItemToCart }) => {
+const ProductCard = ({
+  product,
+  quantity,
+  handleAddItemToCart,
+  handleRemoveItemFromCart,
+  showDescription
+}) => {
+  const { id, name, price, description, image } = product;
+
+  const handleAddToCart = () => {
+    handleAddItemToCart(product);
+  };
+
+  const handleRemoveFromCart = () => {
+    handleRemoveItemFromCart(product);
+  };
+
   return (
     <div className="product-card">
-      <Link to={`/product/${product.id}`}>
-        <img src={product.image} alt={product.name} />
-        <h2 id= "Link-name"> {product.name } </h2>
-      </Link>
-      <p>Price: ${product.price}</p>
-      <button onClick={() => handleAddItemToCart(product)}>Add to Cart</button>
-      <button onClick={() => handleRemoveItemToCart(product)}>Remove from Cart</button>
+      <div className="media">
+        <Link to={`/product/${id}`}>
+          <img className="product-image" src={image} alt={name} />
+        </Link>
+      </div>
+      <div className="product-name">{name}</div>
+      <div className="product-price">${price.toFixed(2)}</div>
+      {showDescription && <div className="product-description">{description}</div>}
+      <div className="product-actions">
+        <button className="add" onClick={handleAddToCart}>
+          Add +
+        </button>
+        <button className="remove" onClick={handleRemoveFromCart}>
+          Remove -
+        </button>
+        {quantity > 0 && <div className="product-quantity">Quantity: {quantity}</div>}
+      </div>
     </div>
   );
 };
 
-// export default ProductCard;
+export default ProductCard;
 
 
-// import React from "react";
-// import { Link } from "react-router-dom";
-// import "./ProductCard.css";
 
-// const ProductCard = ({ product }) => {
-//   return (
-//     <div className="product-card">
-//       <img src={product.image} alt={product.name} />
-//       <h3>{product.name}</h3>
-//       <p>{product.description}</p>
-//       <Link to={`/product/${product.id}`}>View Details</Link>
-//     </div>
-//   );
-// };
-
- export default ProductCard;
-          
           
         

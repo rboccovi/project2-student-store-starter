@@ -3,7 +3,7 @@ import ProductGrid from '../ProductGrid/ProductGrid';
 import "./Home.css"
 import Footer from '../Footer/Footer';
 
-const Home = ({ products }) => {
+const Home = ({ products, handleAddItemToCart, handleRemoveItemFromCart, cartItems }) => {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -23,11 +23,25 @@ const Home = ({ products }) => {
   }, [products, searchQuery]);
 
   return (
-    <><div className="SearchBar">
-      <input type="text" value={searchQuery} onChange={handleSearchChange} placeholder="Search..."></input>
-      <i className="material-icons">search</i>
-      <ProductGrid products={filteredProducts} />
-    </div><Footer /></>
+    <>
+      <div className="SearchBar">
+        <input
+          type="text"
+          value={searchQuery}
+          onChange={handleSearchChange}
+          placeholder="Search..."
+        />
+        <i className="material-icons">search</i>
+      </div>
+      <ProductGrid
+        products={filteredProducts}
+        cartItems={cartItems} // Pass the cartItems state as a prop
+        handleAddItemToCart={handleAddItemToCart}
+        handleRemoveItemFromCart={handleRemoveItemFromCart}
+        quanity
+      />
+      <Footer />
+    </>
   );
 };
 

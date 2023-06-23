@@ -14,7 +14,7 @@ const Subnavbar = ({ products }) => {
   };
 
   const filteredProducts = selectedCategory
-    ? products.filter((product) => product.category === selectedCategory)
+    ? products.filter((product) => product.category === Category)
     : products;
 
   return (
@@ -23,6 +23,7 @@ const Subnavbar = ({ products }) => {
         <button onClick={() => handleCategoryFilter(null)}>All</button>
         <button onClick={() => handleCategoryFilter('clothing')}>Clothing</button>
         <button onClick={() => handleCategoryFilter('food')}>Food</button>
+        <button onClick={() => handleCategoryFilter('foo')}>Food</button>
         {/* Add more category buttons as needed */}
       </div>
       <div className="products">

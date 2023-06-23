@@ -1,23 +1,20 @@
+
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from '../Navbar/Navbar';
 import Sidebar from '../Sidebar/Sidebar';
-// import Logo from '../Logo/Logo';
 import Home from '../Home/Home';
 import Hero from '../Hero/Hero';
-// import Subnavbar from '../Subnavbar/Subnavbar';
 import axios from 'axios';
 import ProductDetail from '../ProductDetail/ProductDetail';
-import ProductView from '../ProductView/ProductView';
-import Subnavbar from "../Subnavbar/Subnavbar"
-import ProductGrid from '../ProductGrid/ProductGrid';
-import AboutUs from '../AboutUs/AboutUs'
-import ContactUs from '../ContactUs/ContactUs'
-import Logo from '../Logo/Logo';
-// import AboutUs from "./component/aboutUs/aboutUs"
+import Subnavbar from '../Subnavbar/Subnavbar';
+import AboutUs from '../AboutUs/AboutUs';
+import ContactUs from '../ContactUs/ContactUs';
 
 const App = () => {
   const [products, setProducts] = useState([]);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [cartItems, setCartItems] = useState([]);
 
   useEffect(() => {
     axios
@@ -30,47 +27,71 @@ const App = () => {
       });
   }, []);
 
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const handleAddItemToCart = (product) => {
+    const existingItem = cartItems.find((item) => item.id === product.id);
 
-  const handleToggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
+    if (existingItem) {
+      setCartItems((prevItems) =>
+        prevItems.map((item) =>
+          item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
+        )
+      );
+    } else {
+      setCartItems((prevItems) => [...prevItems, { ...product, quantity: 1 }]);
+    }
   };
 
-  return ( 
+  const handleRemoveItemFromCart = (product) => {
+    const existingItem = cartItems.find((item) => item.id === product.id);
+
+    if (existingItem && existingItem.quantity > 1) {
+      setCartItems((prevItems) =>
+        prevItems.map((item) =>
+          item.id === product.id ? { ...item, quantity: item.quantity - 1 } : item
+        )
+      );
+    } else {
+      setCartItems((prevItems) =>
+        prevItems.filter((item) => item.id !== product.id)
+      );
+    }
+  };
+
+  return (
     <div className="app">
-    <Router>
-      
-      <Navbar />
-    
-     
-      <Hero />
-
-     
-      <Subnavbar />
-     
-      {/* <Home products={products}/> */}
-
-
-    
-      <Routes>
-        
-        <Route path="/product/:productId" element={<ProductDetail />} />
-        <Route path="/" element={<Home products={products}/>}/>
-        <Route path="/about-us" element={ <AboutUs />}></Route>
-        <Route path="/contact-us" element={ <ContactUs />}></Route> 
-        <Route path="/buy-now" />
-        <Route path="/"element={<Logo/>}></Route>
-
-
-
-        {/* IMPLEMENT NOT FOUND COMPONENT */}
-        {/* <Route path="*" element={<NotFound />} */}
-      </Routes>
-
-      {/* Render the Sidebar component */}
-      {isSidebarOpen && <Sidebar isOpen={isSidebarOpen} />}
-    </Router>
-  </div>
+      <Router>
+        <Navbar />
+        <Hero />
+        <Subnavbar />
+        <Sidebar
+          cartItems={cartItems}
+          isOpen={isSidebarOpen}
+          setCartItems={setCartItems} // Pass the setCartItems function to the Sidebar component
+          handleRemoveItemFromCart={handleRemoveItemFromCart}
+        />
+        <Routes>
+          <Route
+            path="/product/:productId"
+            element={<ProductDetail setCartItems={setCartItems} />}
+          />
+          <Route
+            path="/"
+            element={
+              <Home
+                products={products}
+                setCartItems={setCartItems} // Pass the setCartItems function to the Home component
+                cartItems={cartItems}
+                handleAddItemToCart={handleAddItemToCart}
+                handleRemoveItemFromCart={handleRemoveItemFromCart}
+              />
+            }
+          />
+          <Route path="/about-us" element={<AboutUs />} />
+          <Route path="/contact-us" element={<ContactUs />} />
+          <Route path="/buy-now" />
+        </Routes>
+      </Router>
+    </div>
   );
 };
 
