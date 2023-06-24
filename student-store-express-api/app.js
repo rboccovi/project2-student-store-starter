@@ -1,19 +1,17 @@
-// YOUR CODE HERE
+// imports and dependencies 
 const express = require ("express")
-const morgan = require ("morgan")
 const cors= require("cors")
+const morgan = require("morgan")
 
-// const storeRouter = require ("./routes/stores");
-
+const storeRouter = require ('./Routes/StoreRoutes')
 
 const app = express()
 
-//mounting middleware
+// mounting middleware
+app.use(cors())
+app.use(morgan("dev"))
+app.use(express.json())
 
+app.use("/", storeRouter);
 
-app.use (cors())
-app.use (morgan ("dev"));
-app.use(express.json());
-
-
-// app.use ("/", storeRoutes);
+module.exports = app

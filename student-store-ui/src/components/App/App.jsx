@@ -12,19 +12,25 @@ import AboutUs from '../AboutUs/AboutUs';
 import ContactUs from '../ContactUs/ContactUs';
 
 const App = () => {
+
+  //State Variables
   const [products, setProducts] = useState([]);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [cartItems, setCartItems] = useState([]);
+  const [ CheckoutForm,setCheckoutForm]=useState ({Name: "" , Email: ""})
+  const [error, setError] = useState(null)
 
   useEffect(() => {
-    axios
-      .get('https://codepath-store-api.herokuapp.com/store')
-      .then((response) => {
-        setProducts(response.data.products);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    const fetchData = async () => {
+      try{
+        const res = await axios.get('http://localhost:3001/store/');
+        setProducts(res.data)
+      }catch (e) {
+        setError(e);
+      }
+      
+    }
+    fetchData();
   }, []);
 
   const handleAddItemToCart = (product) => {
@@ -57,6 +63,14 @@ const App = () => {
     }
   };
 
+  //Handle shopping Cart change
+  // Function to clear the shopping cart
+  const clearCart = () => {
+    setCartItems([]);
+  };
+
+  
+
   return (
     <div className="app">
       <Router>
@@ -68,6 +82,7 @@ const App = () => {
           isOpen={isSidebarOpen}
           setCartItems={setCartItems} // Pass the setCartItems function to the Sidebar component
           handleRemoveItemFromCart={handleRemoveItemFromCart}
+          clearCart={clearCart}
         />
         <Routes>
           <Route

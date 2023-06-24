@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import './Sidebar.css';
-import CartItem from '../CartItem/CartItem'; // Import the CartItem component
+import CartItem from '../CartItem/CartItem'; 
+import CheckoutForm from '../CheckoutForm/CheckoutForm';
 
-const Sidebar = ({ cartItems, handleAddItemToCart, handleRemoveItemFromCart }) => {
+
+
+// Contains cart item and checkoutform
+const Sidebar = ({ cartItems, handleAddItemToCart, handleRemoveItemFromCart,clearCart }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleToggle = () => {
@@ -43,7 +47,7 @@ const Sidebar = ({ cartItems, handleAddItemToCart, handleRemoveItemFromCart }) =
                   <tbody>
                 
                     {cartItems.map((item) => (
-                      //iterates over each item of the array, passing the necessary props to each component. 
+                      //iterates over each item of the array,
                       <CartItem
                         key={item.id}
                         item={item}
@@ -61,33 +65,9 @@ const Sidebar = ({ cartItems, handleAddItemToCart, handleRemoveItemFromCart }) =
               </>
             )}
           </div>
-          <div className="section">
-            <h2>Payment Info</h2>
-            <i className="material-icons">monetization_on</i>
-            <div className="input-group">
-              <label htmlFor="name">Name</label>
-              <input type="text" id="name" value="" />
-            </div>
-            <div className="input-group">
-              <label htmlFor="email">Email</label>
-              <input type="text" id="email" value="" />
-            </div>
-            <div className="input-group">
-              <label>
-                <input type="checkbox" />
-                I agree to the terms and conditions
-              </label>
-            </div>
-            <button className="checkout-button">Checkout</button>
-          </div>
-          <div className="section">
-            <h2>Checkout Info</h2>
-            <i className="material-icons">fact_check</i>
-            <p>
-              This is the checkout information section.
-              Add relevant content and instructions here.
-            </p>
-          </div>
+          <CheckoutForm clearCart={clearCart}
+           />
+
         </div>
       )}
     </section>
